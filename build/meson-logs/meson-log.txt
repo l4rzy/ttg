@@ -1,0 +1,51 @@
+Build started at 2018-06-11T01:59:45.239920
+Main binary: /usr/bin/python
+Python system: Linux
+The Meson build system
+Version: 0.46.0
+Source dir: /home/l4/Projects/ttg
+Build dir: /home/l4/Projects/ttg/build
+Build type: native build
+Project name: ttg
+Native C compiler: cc (gcc 8.1.0 "cc (GCC) 8.1.0")
+Build machine cpu family: x86_64
+Build machine cpu: x86_64
+Running compile:
+Working directory:  /tmp/tmp8gmhr7dc
+Command line:  cc /tmp/tmp8gmhr7dc/testfile.c -pipe -D_FILE_OFFSET_BITS=64 -o /tmp/tmp8gmhr7dc/output.exe -O0 -Wl,--start-group -ltdjson -Wl,--end-group 
+
+Code:
+ int main(int argc, char **argv) { return 0; }
+Compiler stdout:
+ 
+Compiler stderr:
+ 
+Library tdjson found: YES
+Dependency threads found: YES (cached)
+Dependency ncurses found: YES (cached)
+Running compile:
+Working directory:  /tmp/tmp0nsc7ypz
+Command line:  cc /tmp/tmp0nsc7ypz/testfile.c -pipe -D_FILE_OFFSET_BITS=64 -c -o /tmp/tmp0nsc7ypz/output.obj -O0 -Wall 
+
+Code:
+ int i;
+
+Compiler stdout:
+ 
+Compiler stderr:
+ 
+Compiler for C supports arguments -Wall: YES
+Running compile:
+Working directory:  /tmp/tmpir1aa69l
+Command line:  cc /tmp/tmpir1aa69l/testfile.c -pipe -D_FILE_OFFSET_BITS=64 -c -o /tmp/tmpir1aa69l/output.obj -O0 -Wextra 
+
+Code:
+ int i;
+
+Compiler stdout:
+ 
+Compiler stderr:
+ 
+Compiler for C supports arguments -Wextra: YES
+Build targets in project: 1
+Found ninja-1.8.2 at /usr/bin/ninja
