@@ -16,7 +16,15 @@ struct _ttg_info {
 };
 typedef struct _ttg_info ttg_info_t;
 
+/*
+ * starts the ttg, call each time when program starts
+ * or resetting
+ */
 int ttg_start();
+
+/*
+ * for calling when program stops
+ */
 int ttg_stop();
 
 #endif

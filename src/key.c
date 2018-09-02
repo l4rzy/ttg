@@ -3,8 +3,8 @@
 /*
  * global variables from ui
  */
-extern int ui_status_tab;
-extern int ui_status_mode;
+extern int g_ui_status_tab;
+extern int g_ui_status_mode;
 
 /*
  * static functions
@@ -32,7 +32,7 @@ void key_listen(ttg_info_t *data) {
 		ui_redraw(data);
 	}
 
-	switch (ui_status_tab) {
+	switch (g_ui_status_tab) {
 		case UI_TAB_MAIN:
 			key_handle_main(data, c);
 			break;

@@ -22,12 +22,6 @@ enum ui_mode {
 	UI_MODE_VISUAL
 };
 
-enum dialog_size {
-	UI_DIALOG_LARGE,
-	UI_DIALOG_MEDIUM,
-	UI_DIALOG_SMALL
-};
-
 void ui_initialize(void);
 void ui_finalize(void);
 bool ui_size_ok(void);
@@ -36,6 +30,6 @@ void ui_draw_contact(const ttg_info_t *data);
 void ui_draw_action(const ttg_info_t *data);
 void ui_draw_notification(const ttg_info_t *data);
 void ui_redraw(const ttg_info_t *data);
-void ui_draw_dialog(int size, const char *title, const char *message);
+void ui_draw_dialog(int x_gap, int y_gap, const char *title, const char *message);
 
 #endif

@@ -33,7 +33,6 @@ int main(int argc, char *argv[]) {
 			debug = 1;
 			break;
 		default:
-			TTG_DEBUG_INFO("Starting");
 			ttg_start();
 	}
 }

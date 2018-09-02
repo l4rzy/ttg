@@ -3,8 +3,8 @@
 /*
  * global variables
  */
-int ui_status_tab = UI_TAB_MAIN;
-int ui_status_mode = UI_MODE_NORMAL;
+int g_ui_status_tab = UI_TAB_MAIN;
+int g_ui_status_mode = UI_MODE_NORMAL;
 
 /*
  * static functions
@@ -84,41 +84,32 @@ void ui_finalize(void) {
 	(void)endwin();
 }
 
-void ui_draw_dialog(int size, const char *title, const char  *message) {
+void ui_draw_dialog(int x_gap, int y_gap, const char *title, const char  *message) {
 	//get stdscr size
 	int h, w;
 	
 	ui_get_size(&h, &w);
-	int dialog_h;
-	int dialog_w;
-	switch (size) {
-		case UI_DIALOG_LARGE:
-			dialog_h = h - 3;
-			dialog_w = w - 3;
-			break;
-		case UI_DIALOG_MEDIUM:
-		default:
-			dialog_h = h - 5;
-			dialog_w = w - 5;
-			break;
-		case UI_DIALOG_SMALL:
-			dialog_h = h - 7;
-			dialog_w = w - 7;
-			break;
-	}
+	int dialog_y = h - y_gap - 1;
+	int dialog_x = w - x_gap - 1;
 	
 	TTG_DEBUG("Creating a dialog with width=%d and height=%d\n",
-			dialog_w, dialog_h);
+			dialog_x, dialog_y);
 	//boder of the dialog
-	for (int dw =0 ; dw < dialog_w; ++dw) {
+	for (int x = x_gap; x < dialog_x; ++x) {
 		//left
-		mvprintw(dialog_h, dw, "x");
+		//mvprintw(dialog_h, dw, "%c", ACS_HLINE);
+		mvaddch(dialog_y, x, ACS_HLINE);
+		mvaddch(y_gap, x, ACS_HLINE);
 		//right
 	}
 
-	for (int h = 0; h < dialog_h; ++h) {
-		//top
-		
-		//bottom
+	for (int y = y_gap; y < dialog_y; ++y) {
+		mvaddch(y, x_gap, ACS_VLINE);
+		mvaddch(y, dialog_x, ACS_VLINE);
 	}
+	mvaddch(dialog_y, x_gap, ACS_LLCORNER);
+	mvaddch(dialog_y, dialog_x, ACS_LRCORNER);
+
+	mvaddch(y_gap, dialog_x, ACS_URCORNER);
+	mvaddch(y_gap, x_gap, ACS_ULCORNER);
 }

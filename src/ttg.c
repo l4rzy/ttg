@@ -5,8 +5,6 @@ static void *td_handle;
 static pthread_t thr_handle;
 static pthread_mutex_t *mtx;
 
-static void *ttg_start_tdjson(void *data);
-
 #if DEBUG_ON
 static int gettid() {
 	return syscall(SYS_gettid);
@@ -37,7 +35,7 @@ int ttg_start() {
 	 * on another thread
 	 */
 	ui_initialize();
-	ui_draw_dialog(UI_DIALOG_SMALL, "l4zry says hi to the world", "yes");
+	ui_draw_dialog(0, 3, "l4zry says hi to the world", "yes");
 
 	ttg_info_t data = {
 		.exit = false
@@ -52,13 +50,13 @@ int ttg_start() {
 	TTG_DEBUG_INFO("Received exit event");
 	ttg_stop();
 
-	//pthread_create(&thr_handle, NULL, ttg_start_tdjson, NULL);
+	pthread_create(&thr_handle, NULL, ttg_start_tdjson, NULL);
 	return -1;
 }
 
 int ttg_stop() {
 	TTG_DEBUG_INFO("Calling ttg stop");
-	//td_json_client_destroy(td_handle);
+	td_json_client_destroy(td_handle);
 	ui_finalize();
 	return 0;
 }
